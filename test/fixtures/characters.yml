@@ -1,0 +1,27 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  first_type: 1
+  second_type: 1
+  hp_score: 1
+  attack_score: 1
+  defense_score: 1
+  sp_attack_score: 1
+  sp_defense_score: 1
+  speed: 1
+  generation: 1
+  is_legendary: false
+
+two:
+  name: MyString
+  first_type: 1
+  second_type: 1
+  hp_score: 1
+  attack_score: 1
+  defense_score: 1
+  sp_attack_score: 1
+  sp_defense_score: 1
+  speed: 1
+  generation: 1
+  is_legendary: false
