@@ -1,0 +1,57 @@
+name: Rails
+on: push
+
+jobs:
+  verify:
+    name: Test
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:14.5
+        env:
+          POSTGRES_PASSWORD: test
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+      redis:
+        image: redis
+        ports:
+        - 6379:6379
+        options: --entrypoint redis-server
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.1.2
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16.0
+      - name: Install Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install
+          sudo apt-get -yqq install libpq-dev build-essential libcurl4-openssl-dev
+          cd inventory
+          gem install bundler
+          bundle install --jobs 4 --retry 3
+          yarn install
+      - name: Setup Test Database
+        env:
+          RAILS_ENV: test
+          POKEMON_DATABASE_PASSWORD: test
+        run: |
+          cd inventory
+          bundle exec rails db:create db:migrate
+      - name: Run Tests
+        env:
+          RAILS_ENV: test
+          POKEMON_DATABASE_PASSWORD: test
+        run: |
+          cd inventory
+          bin/rails test
