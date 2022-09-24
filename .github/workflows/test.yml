@@ -53,5 +53,5 @@ jobs:
           RAILS_ENV: test
           POKEMON_DATABASE_PASSWORD: test
         run: |
-          cd inventory
+          cd pokemon
           bin/rails test
