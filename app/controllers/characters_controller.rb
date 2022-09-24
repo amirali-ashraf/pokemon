@@ -3,14 +3,28 @@ class CharactersController < ApplicationController
 
   # GET /characters
   def index
-    @characters = Character.all
+    page = params[:page] || 1
+    per_page = params[:per_page] || 10
 
-    render json: @characters
+    @characters = Character.page(page).per(per_page)
+
+    @result = {
+      pagination: {
+        current: @characters.current_page,
+        prev_page: @characters.prev_page,
+        next_page: @characters.next_page,
+        total_pages: @characters.total_pages,
+        count: @characters.total_count
+      },
+      collection: @characters.as_json(method: :total_score)
+    }
+
+    render json: @result
   end
 
   # GET /characters/1
   def show
-    render json: @character
+    render json: @character.as_json(method: :total_score)
   end
 
   # POST /characters
@@ -46,6 +60,6 @@ class CharactersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def character_params
-      params.require(:character).permit(:name, :first_type, :second_type, :attack_score, :defense_score, :sp_attack_score, :sp_defense_score, :speed, :generation, :is_legendary)
+      params.require(:character).permit(:name, :first_type, :second_type, :hp_score, :attack_score, :defense_score, :sp_attack_score, :sp_defense_score, :speed, :generation, :is_legendary)
     end
 end
