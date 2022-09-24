@@ -3,6 +3,23 @@ require "test_helper"
 class CharactersControllerTest < ActionDispatch::IntegrationTest
   setup do
     @character = characters(:one)
+    @character_two = characters(:two)
+  end
+
+  test "should get paginated index - 2 per page" do
+    get characters_url, params: {page: 1, per_page: 2}#, as: :json
+    assert_response :success
+    assert_equal 2, @response.parsed_body["collection"].size
+    assert_equal 1, @response.parsed_body["pagination"]["current"]
+  end
+
+  test "should get paginated index - 1 per page" do
+    get characters_url, params: {page: 2, per_page: 1}#, as: :json
+    assert_response :success
+    assert_equal 1, @response.parsed_body["collection"].size
+    assert_equal 2, @response.parsed_body["pagination"]["current"]
+    assert_equal "character_2", @response.parsed_body["collection"].first["name"]
+    assert_equal 6, @response.parsed_body["collection"].first["total_score"]
   end
 
   test "should get index" do
