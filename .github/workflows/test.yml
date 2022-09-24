@@ -45,12 +45,10 @@ jobs:
           RAILS_ENV: test
           POKEMON_DATABASE_PASSWORD: test
         run: |
-          cd pokemon
           bundle exec rails db:create db:migrate
       - name: Run Tests
         env:
           RAILS_ENV: test
           POKEMON_DATABASE_PASSWORD: test
         run: |
-          cd pokemon
           bin/rails test
