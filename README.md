@@ -4,7 +4,7 @@
 
 This application can be executed by using docker. To run the application you only need to run the following command if you have already installed `docker-compose` plugin.
 
-```sh
+```bash
   docker-compose up
 ```
 
