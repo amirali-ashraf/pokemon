@@ -2,7 +2,7 @@ class Character < ApplicationRecord
   attribute :total_score
   validates :name, uniqueness: true
   validates :first_type, presence: true
-  validates :second_type, presence: true
+  # validates :second_type, presence: true => it is optional
   validates :hp_score, numericality: true
   validates :attack_score, numericality: true
   validates :defense_score, numericality: true
