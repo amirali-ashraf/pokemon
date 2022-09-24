@@ -1,3 +1,5 @@
+![example workflow](https://github.com/amirali-ashraf/plasir/actions/workflows/test.yml/badge.svg)
+
 # README
 
 ## Run the application
