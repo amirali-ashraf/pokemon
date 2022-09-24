@@ -4,7 +4,7 @@
 
 This application can be executed by using docker. To run the application you only need to run the following command if you have already installed `docker-compose` plugin.
 
-```sh
+```bash
   docker-compose up
 ```
 
@@ -17,9 +17,9 @@ I have decided to use one table to include the characters. Also, since I assumed
 Characters can be added, listed, showed, or updated by using the following methods.
 
 ### GET
-To list all characters the following API call can be used. You can define the page number and the number of records per page.
-```
-$ curl --location --request GET 'localhost:3000/characters?page=1&per_page=10'
+To list all characters the following API call can be used. You can define the page number and the number of records per page. The default value for page is 1 and per_page is 10.
+```bash
+$ curl --location --request GET 'localhost:3000/characters?page=1&per_page=2'
 ```
 The resulting object will be:
 
@@ -29,7 +29,7 @@ The resulting object will be:
         "current": 1,
         "prev_page": null,
         "next_page": 2,
-        "total_pages": 80,
+        "total_pages": 400,
         "count": 800
     },
     "collection": [
@@ -46,8 +46,8 @@ The resulting object will be:
             "speed": 45,
             "generation": 1,
             "is_legendary": false,
-            "created_at": "2022-09-24T04:29:00.062Z",
-            "updated_at": "2022-09-24T04:29:00.062Z",
+            "created_at": "2022-09-24T04:45:13.820Z",
+            "updated_at": "2022-09-24T04:45:13.820Z",
             "total_score": 318
         },
         {
@@ -63,148 +63,139 @@ The resulting object will be:
             "speed": 60,
             "generation": 1,
             "is_legendary": false,
-            "created_at": "2022-09-24T04:29:00.077Z",
-            "updated_at": "2022-09-24T04:29:00.077Z",
+            "created_at": "2022-09-24T04:45:13.834Z",
+            "updated_at": "2022-09-24T04:45:13.834Z",
             "total_score": 405
-        },
-        {
-            "id": 3,
-            "name": "Venusaur",
-            "first_type": "grass",
-            "second_type": "poison",
-            "hp_score": 80,
-            "attack_score": 82,
-            "defense_score": 83,
-            "sp_attack_score": 100,
-            "sp_defense_score": 100,
-            "speed": 80,
-            "generation": 1,
-            "is_legendary": false,
-            "created_at": "2022-09-24T04:29:00.092Z",
-            "updated_at": "2022-09-24T04:29:00.092Z",
-            "total_score": 525
-        },
-        {
-            "id": 4,
-            "name": "VenusaurMega Venusaur",
-            "first_type": "grass",
-            "second_type": "poison",
-            "hp_score": 80,
-            "attack_score": 100,
-            "defense_score": 123,
-            "sp_attack_score": 122,
-            "sp_defense_score": 120,
-            "speed": 80,
-            "generation": 1,
-            "is_legendary": false,
-            "created_at": "2022-09-24T04:29:00.108Z",
-            "updated_at": "2022-09-24T04:29:00.108Z",
-            "total_score": 625
-        },
-        {
-            "id": 5,
-            "name": "Charmander",
-            "first_type": "fire",
-            "second_type": null,
-            "hp_score": 39,
-            "attack_score": 52,
-            "defense_score": 43,
-            "sp_attack_score": 60,
-            "sp_defense_score": 50,
-            "speed": 65,
-            "generation": 1,
-            "is_legendary": false,
-            "created_at": "2022-09-24T04:29:00.122Z",
-            "updated_at": "2022-09-24T04:29:00.122Z",
-            "total_score": 309
-        },
-        {
-            "id": 6,
-            "name": "Charmeleon",
-            "first_type": "fire",
-            "second_type": null,
-            "hp_score": 58,
-            "attack_score": 64,
-            "defense_score": 58,
-            "sp_attack_score": 80,
-            "sp_defense_score": 65,
-            "speed": 80,
-            "generation": 1,
-            "is_legendary": false,
-            "created_at": "2022-09-24T04:29:00.137Z",
-            "updated_at": "2022-09-24T04:29:00.137Z",
-            "total_score": 405
-        },
-        {
-            "id": 7,
-            "name": "Charizard",
-            "first_type": "fire",
-            "second_type": "flying",
-            "hp_score": 78,
-            "attack_score": 84,
-            "defense_score": 78,
-            "sp_attack_score": 109,
-            "sp_defense_score": 85,
-            "speed": 100,
-            "generation": 1,
-            "is_legendary": false,
-            "created_at": "2022-09-24T04:29:00.150Z",
-            "updated_at": "2022-09-24T04:29:00.150Z",
-            "total_score": 534
-        },
-        {
-            "id": 8,
-            "name": "CharizardMega Charizard X",
-            "first_type": "fire",
-            "second_type": "dragon",
-            "hp_score": 78,
-            "attack_score": 130,
-            "defense_score": 111,
-            "sp_attack_score": 130,
-            "sp_defense_score": 85,
-            "speed": 100,
-            "generation": 1,
-            "is_legendary": false,
-            "created_at": "2022-09-24T04:29:00.162Z",
-            "updated_at": "2022-09-24T04:29:00.162Z",
-            "total_score": 634
-        },
-        {
-            "id": 9,
-            "name": "CharizardMega Charizard Y",
-            "first_type": "fire",
-            "second_type": "flying",
-            "hp_score": 78,
-            "attack_score": 104,
-            "defense_score": 78,
-            "sp_attack_score": 159,
-            "sp_defense_score": 115,
-            "speed": 100,
-            "generation": 1,
-            "is_legendary": false,
-            "created_at": "2022-09-24T04:29:00.172Z",
-            "updated_at": "2022-09-24T04:29:00.172Z",
-            "total_score": 634
-        },
-        {
-            "id": 10,
-            "name": "Squirtle",
-            "first_type": "water",
-            "second_type": null,
-            "hp_score": 44,
-            "attack_score": 48,
-            "defense_score": 65,
-            "sp_attack_score": 50,
-            "sp_defense_score": 64,
-            "speed": 43,
-            "generation": 1,
-            "is_legendary": false,
-            "created_at": "2022-09-24T04:29:00.185Z",
-            "updated_at": "2022-09-24T04:29:00.185Z",
-            "total_score": 314
         }
     ]
 }
 ```
+
+### POST
+The post method is as follows. The validation is done through `character.rb` and all fields should be present and be in a defined range.
+
+```bash
+$ curl --location --request POST 'localhost:3000/characters' \
+--data-raw '{
+    "name": "test",
+    "hp_score": "10" ,
+    "first_type": "grass",
+    "second_type": "bug",
+    "attack_score": "20",
+    "defense_score": "30",
+    "sp_attack_score": "40",
+    "sp_defense_score": "50",
+    "speed": "60",
+    "is_legendary": true,
+    "generation": 6
+}'
+```
+
+And the result will be:
+
+```JSON
+{
+    "id": 801,
+    "name": "test",
+    "first_type": "grass",
+    "second_type": "bug",
+    "hp_score": 10,
+    "attack_score": 20,
+    "defense_score": 30,
+    "sp_attack_score": 40,
+    "sp_defense_score": 50,
+    "speed": 60,
+    "generation": 6,
+    "is_legendary": true,
+    "created_at": "2022-09-24T14:36:37.988Z",
+    "updated_at": "2022-09-24T14:36:37.988Z",
+    "total_score": 210
+}
+```
+
+### UPDATE
+
+The records can be updated by using the following API call. 
+
+```bash
+$ curl --location --request PUT 'localhost:3000/characters/801' \
+--data-raw '{
+    "name": "test",
+    "hp_score": "10" ,
+    "first_type": "grass",
+    "second_type": "bug",
+    "attack_score": "20",
+    "defense_score": "30",
+    "sp_attack_score": "40",
+    "sp_defense_score": "50",
+    "speed": "60",
+    "is_legendary": true,
+    "generation": 3
+}'
+```
+
+And the result will be:
+
+```json
+{
+    "name": "test",
+    "first_type": "grass",
+    "second_type": "bug",
+    "hp_score": 10,
+    "attack_score": 20,
+    "defense_score": 30,
+    "sp_attack_score": 40,
+    "sp_defense_score": 50,
+    "speed": 60,
+    "generation": 3,
+    "is_legendary": true,
+    "id": 801,
+    "created_at": "2022-09-24T14:36:37.988Z",
+    "updated_at": "2022-09-24T14:39:18.539Z",
+    "total_score": 210
+}
+```
+
+### GET/SHOW
+
+Each record can be retrieved by using the following API call:
+
+```bash
+$ curl --location --request GET 'localhost:3000/characters/801'
+```
+
+And the result will be:
+
+```json
+{
+    "id": 801,
+    "name": "test",
+    "first_type": "grass",
+    "second_type": "bug",
+    "hp_score": 10,
+    "attack_score": 20,
+    "defense_score": 30,
+    "sp_attack_score": 40,
+    "sp_defense_score": 50,
+    "speed": 60,
+    "generation": 3,
+    "is_legendary": true,
+    "created_at": "2022-09-24T14:36:37.988Z",
+    "updated_at": "2022-09-24T14:39:18.539Z",
+    "total_score": 210
+}
+```
+
+### DELETE
+
+To delete a record the following API call can be used:
+
+```bash
+$ curl --location --request DELETE 'localhost:3000/characters/801' 
+```
+
+And if it is successfull, it will return true otherwise it will return an error.
+
+
 
 
