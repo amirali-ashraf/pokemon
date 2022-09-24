@@ -29,7 +29,21 @@ class CharactersControllerTest < ActionDispatch::IntegrationTest
 
   test "should create character" do
     assert_difference("Character.count") do
-      post characters_url, params: { character: { attack_score: @character.attack_score, defense_score: @character.defense_score, first_type: @character.first_type, generation: @character.generation, is_legendary: @character.is_legendary, name: @character.name, second_type: @character.second_type, sp_attack_score: @character.sp_attack_score, sp_defense_score: @character.sp_defense_score, speed: @character.speed } }, as: :json
+      post characters_url, params: {
+        character: {
+          hp_score: @character.hp_score,
+          attack_score: @character.attack_score,
+          defense_score: @character.defense_score,
+          first_type: @character.first_type,
+          generation: @character.generation,
+          is_legendary: @character.is_legendary,
+          name: "#{@character.name}+1",
+          second_type: @character.second_type,
+          sp_attack_score: @character.sp_attack_score,
+          sp_defense_score: @character.sp_defense_score,
+          speed: @character.speed
+        }
+      }, as: :json
     end
 
     assert_response :created
